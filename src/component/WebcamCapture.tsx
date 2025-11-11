@@ -1,3 +1,4 @@
+import { Camera, Download, RotateCcw } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
 
@@ -11,13 +12,13 @@ const WebcamCapture: React.FC = () => {
   const webcamRef = useRef<Webcam>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
 
-  // 📸 Capture photo
+  // Capture photo
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current?.getScreenshot();
     if (imageSrc) setCapturedImage(imageSrc);
   }, []);
 
-  // 💾 Download captured image
+  // Download captured image
   const downloadImage = useCallback(() => {
     if (capturedImage) {
       const link = document.createElement("a");
@@ -29,13 +30,13 @@ const WebcamCapture: React.FC = () => {
     }
   }, [capturedImage]);
 
-  // 🔄 Retake photo
+  // Retake photo
   const retake = useCallback(() => {
     setCapturedImage(null);
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4 gap-6">
+    <div className="flex flex-col w-4xl mx-auto items-center justify-center min-h-screen gap-3">
       {!capturedImage ? (
         <>
           <Webcam
@@ -43,13 +44,13 @@ const WebcamCapture: React.FC = () => {
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
-            className="rounded-2xl shadow-xl border-4 border-blue-500"
+            className="rounded-2xl shadow-xl border-4 border-green-500"
           />
           <button
             onClick={capture}
-            className="px-6 py-2 bg-blue-600 text-white rounded-lg shadow hover:bg-blue-700 transition-all"
+            className="px-6 py-2 text-white rounded-lg shadow transition-all cursor-pointer"
           >
-            Capture Photo
+            <Camera className="text-black" />
           </button>
         </>
       ) : (
@@ -62,15 +63,15 @@ const WebcamCapture: React.FC = () => {
           <div className="flex gap-4">
             <button
               onClick={downloadImage}
-              className="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all"
+              className="px-5 py-2 bg-white text-white shadow border-1 border-[#dadada] rounded-lg  transition-all cursor-pointer"
             >
-              Download
+              <Download className="text-black" />
             </button>
             <button
               onClick={retake}
-              className="px-5 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-all"
+              className="px-5 py-2 bg-white text-white shadow border-1 border-[#dadada] rounded-lg transition-all cursor-pointer"
             >
-              Retake
+              <RotateCcw className="text-black" />
             </button>
           </div>
         </div>
