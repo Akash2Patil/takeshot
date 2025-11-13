@@ -1,6 +1,7 @@
 import { Camera, Download, RotateCcw } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
 import Webcam from "react-webcam";
+import Button from "./global/Button";
 
 const videoConstraints = {
   width: 1280,
@@ -46,12 +47,9 @@ const WebcamCapture: React.FC = () => {
             videoConstraints={videoConstraints}
             className="rounded-2xl shadow-xl border-4 border-green-500"
           />
-          <button
-            onClick={capture}
-            className="px-6 py-2 text-white rounded-lg shadow transition-all cursor-pointer"
-          >
+          <Button onClick={capture}>
             <Camera className="text-black" />
-          </button>
+          </Button>
         </>
       ) : (
         <div className="flex flex-col items-center gap-4">
@@ -60,20 +58,17 @@ const WebcamCapture: React.FC = () => {
             alt="Captured"
             className="rounded-xl shadow-lg border border-gray-300"
           />
+
           <div className="flex gap-4">
-            <button
-              onClick={downloadImage}
-              className="px-5 py-2 bg-white text-white shadow border-1 border-[#dadada] rounded-lg  transition-all cursor-pointer"
-            >
+            <Button onClick={downloadImage}>
               <Download className="text-black" />
-            </button>
-            <button
-              onClick={retake}
-              className="px-5 py-2 bg-white text-white shadow border-1 border-[#dadada] rounded-lg transition-all cursor-pointer"
-            >
+            </Button>
+
+            <Button onClick={retake}>
               <RotateCcw className="text-black" />
-            </button>
+            </Button>
           </div>
+
         </div>
       )}
     </div>
