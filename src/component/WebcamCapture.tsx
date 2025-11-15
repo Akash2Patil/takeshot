@@ -37,7 +37,7 @@ const WebcamCapture: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col w-4xl mx-auto items-center justify-center min-h-screen gap-3">
+    <div className="flex bg-[var(--bg-color)] flex-col  mx-auto items-center justify-center min-h-screen gap-3">
       {!capturedImage ? (
         <>
           <Webcam
@@ -45,10 +45,10 @@ const WebcamCapture: React.FC = () => {
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
-            className="rounded-2xl shadow-xl border-4 border-green-500"
+            className="rounded-2xl w-4xl shadow-xl border-4 border-green-500"
           />
           <Button onClick={capture}>
-            <Camera className="text-black" />
+            <Camera className="text-[var(--text-color)]" />
           </Button>
         </>
       ) : (
@@ -61,11 +61,11 @@ const WebcamCapture: React.FC = () => {
 
           <div className="flex gap-4">
             <Button onClick={downloadImage}>
-              <Download className="text-black" />
+              <Download className="text-black bg-[var(--bg-color)]" />
             </Button>
 
             <Button onClick={retake}>
-              <RotateCcw className="text-black" />
+              <RotateCcw className="text-[var(--text-color)] " />
             </Button>
           </div>
 

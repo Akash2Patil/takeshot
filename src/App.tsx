@@ -13,7 +13,7 @@ const App: React.FC = () => {
   return (
     <>
       <Navbar />
-      {/* <WebcamCapture /> */}
+      <WebcamCapture />
     </>
   );
 };
